@@ -159,7 +159,7 @@ class Interakt
     );
   }
 
-  public function send(string $api_type = null, array $parameter = [], array $body = []): array{
+  private function send(string $api_type = null, array $parameter = [], array $body = []): array{
     $response = Http::withHeaders([
       'Authorization' => 'Basic ' . $this->api_key
     ])
@@ -169,7 +169,7 @@ class Interakt
     return json_decode($response, true);
   }
 
-  public function get_url(string $api_type): string {
+  private function get_url(string $api_type): string {
     $url = 'https://api.interakt.ai/v1/public/';
 
     switch ($api_type) {
