@@ -21,7 +21,7 @@ class Interakt
     string $countryCode = null,
     array $traits = [],
     array $tags = []
-  ): object
+  ): array
   {
     $body = [
       'traits' => $traits,
@@ -52,7 +52,7 @@ class Interakt
     string $countryCode = null,
     string $event = null,
     array $traits = []
-  ): object
+  ): array
   {
     $body = [
       'event' => $event,
@@ -81,7 +81,7 @@ class Interakt
     int $limit = 100,
     string $filter_start_date = '2010-01-01',
     string $filter_end_date = null
-  ): object
+  ): array
   {
     $body = [
       'filters' => [
@@ -123,7 +123,7 @@ class Interakt
     array $bodyValues = [],
     array $buttonValues = [],
   )
-  : object
+  : array
   {
     $body = [
       'callbackData' => $callbackData,
@@ -159,14 +159,14 @@ class Interakt
     );
   }
 
-  public function send(string $api_type = null, array $parameter = [], array $body = []): object{
+  public function send(string $api_type = null, array $parameter = [], array $body = []): array{
     $response = Http::withHeaders([
       'Authorization' => 'Basic ' . $this->api_key
     ])
     ->withBody(json_encode($body), 'application/json')
     ->post($this->get_url($api_type), $parameter);
 
-    return json_decode($response);
+    return json_decode($response, true);
   }
 
   public function get_url(string $api_type): string {
