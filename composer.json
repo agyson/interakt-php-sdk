@@ -2,7 +2,7 @@
     "name": "agyson/interakt-php-sdk",
     "description": "Interakt PHP SDK",
     "type": "library",
-    "license": "MIT License",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Agyson\\InteraktPhpSdk\\": "src/"
