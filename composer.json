@@ -1,0 +1,21 @@
+{
+    "name": "agyson/interakt-php-sdk",
+    "description": "Interakt PHP SDK",
+    "type": "library",
+    "license": "MIT License",
+    "autoload": {
+        "psr-4": {
+            "Agyson\\InteraktPhpSdk\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Agy Nurwicaksono",
+            "email": "agy@agyson.com"
+        }
+    ],
+    "require": {
+      "guzzlehttp/guzzle": "^7.3",
+      "nesbot/carbon": "^2.66"
+    }
+}
