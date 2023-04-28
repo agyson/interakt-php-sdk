@@ -15,7 +15,6 @@
         }
     ],
     "require": {
-      "guzzlehttp/guzzle": "^7.3",
-      "nesbot/carbon": "^2.66"
+      "guzzlehttp/guzzle": "^7.3"
     }
 }
