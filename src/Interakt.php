@@ -41,7 +41,7 @@ class Interakt
 
     return $this->send(
       'track_user',
-      $body = $body
+      body: $body
     );
   }
 
@@ -72,7 +72,7 @@ class Interakt
 
     return $this->send(
       'track_user',
-      $body = $body
+      body: $body
     );
   }
 
@@ -104,11 +104,11 @@ class Interakt
 
     return $this->send(
       'customer',
-      $parameter = [
+      parameter: [
         'offset' => $offset,
         'limit' => $limit,
       ],
-      $body = $body
+      body: $body
     );
   }
 
@@ -155,11 +155,11 @@ class Interakt
 
     return $this->send(
       'template',
-      $body = $body
+      body: $body
     );
   }
 
-  private function send(string $api_type = null, array $parameter = [], array $body = []): array{
+  private function send($api_type = null, $parameter = [], $body = []): array{
     $response = Http::withHeaders([
       'Authorization' => 'Basic ' . $this->api_key
     ])
