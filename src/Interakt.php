@@ -71,7 +71,7 @@ class Interakt
     }
 
     return $this->send(
-      'track_user',
+      'track_event',
       body: $body
     );
   }
@@ -176,7 +176,7 @@ class Interakt
       case 'track_user':
         return $url . 'track/users/';
         break;
-      case 'tract_event':
+      case 'track_event':
         return $url . 'track/events/';
         break;
       case 'customer':
