@@ -150,7 +150,7 @@ class Interakt
     }
 
     if(count($buttonValues)){
-      $body['template']['buttonValues'] = $buttonValues;
+      $body['template']['buttonValues'] = (object) $buttonValues;
     }
 
     return $this->send(
