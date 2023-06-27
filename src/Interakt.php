@@ -159,6 +159,216 @@ class Interakt
     );
   }
 
+  public function send_text_message(
+    string $fullPhoneNumber = null,
+    string $phoneNumber = null,
+    string $countryCode = null,
+    string $callbackData = null,
+    string $message = null,
+
+
+    string $type = null, // Text, Audio, Video, Image, Document, Button, List, MultiProductMessage
+    array $data = []
+  )
+  : array {
+    $body = [
+      'callbackData' => $callbackData,
+      'type' => 'Text',
+      'data' => [
+        'message' => $message
+      ]
+    ];
+
+    if ($fullPhoneNumber != null) {
+      $body['fullPhoneNumber'] = $fullPhoneNumber;
+    } else {
+      $body['phoneNumber'] = $phoneNumber;
+      $bodu['countryCode'] = $countryCode;
+    }
+
+    return $this->send(
+      'message',
+      body: $body
+    );
+  }
+
+  public function send_audio_message(
+    string $fullPhoneNumber = null,
+    string $phoneNumber = null,
+    string $countryCode = null,
+    string $callbackData = null,
+    string $mediaUrl = null,
+  )
+  : array {
+    $body = [
+      'callbackData' => $callbackData,
+      'type' => 'Audio',
+      'data' => [
+        'mediaUrl' => $mediaUrl
+      ]
+    ];
+
+    if ($fullPhoneNumber != null) {
+      $body['fullPhoneNumber'] = $fullPhoneNumber;
+    } else {
+      $body['phoneNumber'] = $phoneNumber;
+      $bodu['countryCode'] = $countryCode;
+    }
+
+    return $this->send(
+      'message',
+      body: $body
+    );
+  }
+
+  public function send_video_message(
+    string $fullPhoneNumber = null,
+    string $phoneNumber = null,
+    string $countryCode = null,
+    string $callbackData = null,
+    string $mediaUrl = null,
+    string $message = null,
+  )
+  : array {
+    $body = [
+      'callbackData' => $callbackData,
+      'type' => 'Audio',
+      'data' => [
+        'message' => $message,
+        'mediaUrl' => $mediaUrl,
+      ]
+    ];
+
+    if ($fullPhoneNumber != null) {
+      $body['fullPhoneNumber'] = $fullPhoneNumber;
+    } else {
+      $body['phoneNumber'] = $phoneNumber;
+      $bodu['countryCode'] = $countryCode;
+    }
+
+    return $this->send(
+      'message',
+      body: $body
+    );
+  }
+
+  public function send_document_message(
+    string $fullPhoneNumber = null,
+    string $phoneNumber = null,
+    string $countryCode = null,
+    string $callbackData = null,
+    string $mediaUrl = null,
+    string $fileName = null,
+  )
+  : array {
+    $body = [
+      'callbackData' => $callbackData,
+      'type' => 'Audio',
+      'data' => [
+        'fileName' => $fileName,
+        'mediaUrl' => $mediaUrl,
+      ]
+    ];
+
+    if ($fullPhoneNumber != null) {
+      $body['fullPhoneNumber'] = $fullPhoneNumber;
+    } else {
+      $body['phoneNumber'] = $phoneNumber;
+      $bodu['countryCode'] = $countryCode;
+    }
+
+    return $this->send(
+      'message',
+      body: $body
+    );
+  }
+
+  public function send_image_message(
+    string $fullPhoneNumber = null,
+    string $phoneNumber = null,
+    string $countryCode = null,
+    string $callbackData = null,
+    string $mediaUrl = null,
+    string $message = null,
+  )
+  : array {
+    $body = [
+      'callbackData' => $callbackData,
+      'type' => 'Audio',
+      'data' => [
+        'message' => $message,
+        'mediaUrl' => $mediaUrl,
+      ]
+    ];
+
+    if ($fullPhoneNumber != null) {
+      $body['fullPhoneNumber'] = $fullPhoneNumber;
+    } else {
+      $body['phoneNumber'] = $phoneNumber;
+      $bodu['countryCode'] = $countryCode;
+    }
+
+    return $this->send(
+      'message',
+      body: $body
+    );
+  }
+
+  public function send_button_message(
+    string $fullPhoneNumber = null,
+    string $phoneNumber = null,
+    string $countryCode = null,
+    string $callbackData = null,
+
+    string $text = null,
+    array $button = [],
+  )
+  : array {
+    $body = [
+      'callbackData' => $callbackData,
+      'type' => 'InteractiveButton',
+      'data' => [
+        'message' => [
+          'type' => 'button',
+          'body' => [
+            'text' => $text
+          ],
+          'action' => [
+            'buttons' => [
+              [
+                'type' => 'reply',
+                'reply' => [
+                  'id' => 'id1',
+                  'title' => 'OK'
+                ]
+              ],
+              [
+                'type' => 'reply',
+                'reply' => [
+                  'id' => 'id1',
+                  'title' => 'OK'
+                ]
+              ],
+            ]
+          ]
+        ]
+      ]
+    ];
+
+    if ($fullPhoneNumber != null) {
+      $body['fullPhoneNumber'] = $fullPhoneNumber;
+    } else {
+      $body['phoneNumber'] = $phoneNumber;
+      $bodu['countryCode'] = $countryCode;
+    }
+
+    return $this->send(
+      'message',
+      body: $body
+    );
+  }
+
+
   private function send($api_type = null, $parameter = [], $body = []): array{
     $response = Http::withHeaders([
       'Authorization' => 'Basic ' . $this->api_key
@@ -183,6 +393,9 @@ class Interakt
         return $url . 'apis/users/';
         break;
       case 'template':
+        return $url . 'message/';
+        break;
+      case 'message':
         return $url . 'message/';
         break;
       default:
