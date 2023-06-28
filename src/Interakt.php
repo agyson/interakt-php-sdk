@@ -232,7 +232,7 @@ class Interakt
   : array {
     $body = [
       'callbackData' => $callbackData,
-      'type' => 'Audio',
+      'type' => 'Video',
       'data' => [
         'message' => $message,
         'mediaUrl' => $mediaUrl,
@@ -263,7 +263,7 @@ class Interakt
   : array {
     $body = [
       'callbackData' => $callbackData,
-      'type' => 'Audio',
+      'type' => 'Document',
       'data' => [
         'fileName' => $fileName,
         'mediaUrl' => $mediaUrl,
@@ -294,7 +294,7 @@ class Interakt
   : array {
     $body = [
       'callbackData' => $callbackData,
-      'type' => 'Audio',
+      'type' => 'Image',
       'data' => [
         'message' => $message,
         'mediaUrl' => $mediaUrl,
